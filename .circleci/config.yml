@@ -8,7 +8,7 @@ jobs:
       - checkout
       - run: npm i
       - save_cache:
-          key: "nmp-packages"
+          key: "npm-packages"
           paths:
             - /src/node_modules
       - run: npm run lint
@@ -18,9 +18,9 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: 
+          keys:
             - "npm-packages"
-      - run: nmp i
+      - run: npm i
       - run: npm run test
   analyze:
     docker:
@@ -42,4 +42,3 @@ workflows:
       - analyze:
           requires:
             - test
-        
